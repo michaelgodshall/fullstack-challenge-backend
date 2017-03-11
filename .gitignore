@@ -1,0 +1,16 @@
+.idea
+*.orig
+*.pyc
+*.pyo
+*.swp
+*.tmp
+*.DS_Store
+*.db
+*.sqlite3
+uploads
+media
+node_modules
+staticfiles
+build
+bower_components
+*/settings/local.py

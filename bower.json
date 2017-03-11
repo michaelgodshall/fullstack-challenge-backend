@@ -1,0 +1,23 @@
+{
+  "name": "fullstack_challenge",
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "angular": "~1.5.8",
+    "angular-route": "~1.5.8",
+    "angular-animate": "~1.5.8",
+    "js-data": "~2.9",
+    "js-data-angular": "~3.2.1",
+    "lodash": "~4.14.1",
+    "fastclick": "^1.0.6",
+    "js-cookie": "^2.1.2"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.5.8"
+  },
+  "appPath": "static",
+  "moduleName": "myApp",
+  "resolutions": {
+    "angular": "~1.5.8"
+  }
+}
+

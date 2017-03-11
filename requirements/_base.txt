@@ -1,0 +1,11 @@
+Django>=1.10,<1.11
+whitenoise
+django-extensions
+django-redis-cache
+hiredis
+rq
+django-rq
+djangorestframework
+drf-extensions
+django-filter
+django-debreach
