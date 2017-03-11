@@ -28,9 +28,3 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     #url(r'^.*$', IndexView.as_view())  # Display the index page for HTML5 urls i.e. Angular
 ]
-
-if settings.DEBUG:
-    import debug_toolbar
-    urlpatterns += [
-        url(r'^__debug__/', include(debug_toolbar.urls)),
-    ]

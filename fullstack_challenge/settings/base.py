@@ -36,8 +36,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django_extensions',
+    'localflavor',
 
     'fullstack_challenge',
+    'dmv'
 
 ]
 

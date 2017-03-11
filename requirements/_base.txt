@@ -11,3 +11,4 @@ hiredis==0.2.0
 redis==2.10.5
 rq==0.7.1
 whitenoise==3.3.0
+django-localflavor==1.4.1
