@@ -25,6 +25,7 @@ admin.site.site_title = 'FullStack Challenge'
 
 urlpatterns = [
     url(r'^$', IndexView.as_view(), name='home'),
+    url(r'^api/', include('dmv.urls', namespace='api')),
     url(r'^admin/', admin.site.urls),
     #url(r'^.*$', IndexView.as_view())  # Display the index page for HTML5 urls i.e. Angular
 ]

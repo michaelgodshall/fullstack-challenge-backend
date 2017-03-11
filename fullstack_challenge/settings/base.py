@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'debug_toolbar',
     'localflavor',
+    'rest_framework',
 
     'fullstack_challenge',
     'dmv'
