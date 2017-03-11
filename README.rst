@@ -45,10 +45,6 @@ Defaults to sqllite::
 
     $ ./manage.py migrate
 
-Populate the site with fixture data if any have been created::
-
-    $ ./manage.py loaddata test_data
-
 Create a superuser (optional)
 ============================
 You will use the username and password you create in this step to login to the admin at `localhost:3000/admin/`::
@@ -77,20 +73,3 @@ project.  Run Django server in the first window::
 Then run the gulp server in the second window::
 
     $ gulp
-
-Integrating HTML
-============================
-Add all html templates to the fullstack_challenge/templates directory, or copy the contents into existing templates.
-An 'index.html' template is already included, and inherits from 'base.html'.
-
-Url routes will need to be created for additional templates.  For example, adding 'about.html' will need a
-corresponding '/about/' url route.  Contact Michael Godshall (michael@sew.la) if you need additional routes.
-
-See https://docs.djangoproject.com/en/1.10/ref/templates/language/ for additional information about Django templates.
-
-Integrating Static Assets
-============================
-Add all JavaScript, CSS, images and fonts to the fullstack_challenge/static directory.
-
-Running './manage.py server' (as instructed above) will build the static assets and rebuild them when any
-changes to these files are detected.
