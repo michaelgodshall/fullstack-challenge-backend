@@ -19,8 +19,8 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from fullstack_challenge.views import IndexView
 
-admin.site.site_header = 'fullstack_challenge'
-admin.site.site_title = 'fullstack_challenge'
+admin.site.site_header = 'FullStack Challenge'
+admin.site.site_title = 'FullStack Challenge'
 
 
 urlpatterns = [
