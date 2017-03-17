@@ -17,6 +17,7 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic import TemplateView
+from rest_framework.authtoken import views
 from fullstack_challenge.views import IndexView
 
 admin.site.site_header = 'FullStack Challenge'
@@ -26,6 +27,7 @@ admin.site.site_title = 'FullStack Challenge'
 urlpatterns = [
     url(r'^$', IndexView.as_view(), name='home'),
     url(r'^api/', include('dmv.urls', namespace='api')),
+    url(r'^api-token-auth/', views.obtain_auth_token),
     url(r'^admin/', admin.site.urls),
     #url(r'^.*$', IndexView.as_view())  # Display the index page for HTML5 urls i.e. Angular
 ]

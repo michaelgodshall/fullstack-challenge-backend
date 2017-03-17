@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'localflavor',
     'rest_framework',
+    'rest_framework.authtoken',
+    'corsheaders',
 
     'fullstack_challenge',
     'dmv'
@@ -47,6 +49,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     #'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.gzip.GZipMiddleware',
@@ -184,20 +187,22 @@ CACHES = {
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 
+# Settings for django-cors-headers: https://github.com/ottoyiu/django-cors-headers
+CORS_ORIGIN_ALLOW_ALL = True
+
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/sites/
 #SITE_ID = 1
 
 # Django Rest Framework
-# REST_FRAMEWORK = {
-#     'DEFAULT_FILTER_BACKENDS': (
-#         'rest_framework.filters.DjangoFilterBackend',
-#         'rest_framework.filters.SearchFilter'
-#     ),
-#     #'PAGINATE_BY_PARAM': 'limit',
-#     #'PAGINATE_BY': 100, # Default limit of results to return
-#     #'MAX_PAGINATE_BY': 1000 # Max limit allowed by using `?limit=xxx`
-#
-# }
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
+
+}
 #
 # REST_FRAMEWORK_EXTENSIONS = {
 #     'DEFAULT_CACHE_RESPONSE_TIMEOUT': 60 * 1, # In seconds
