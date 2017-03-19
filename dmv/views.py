@@ -16,6 +16,7 @@ class HouseholdRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIVie
 class PersonListCreateAPIView(generics.ListCreateAPIView):
     serializer_class = PersonSerializer
     queryset = Person.objects.all()
+    filter_fields = ('household',)
     
 
 class PersonRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
@@ -26,6 +27,7 @@ class PersonRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
 class VehicleListCreateAPIView(generics.ListCreateAPIView):
     serializer_class = VehicleSerializer
     queryset = Vehicle.objects.all()
+    filter_fields = ('household',)
     
     
 class VehicleRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):

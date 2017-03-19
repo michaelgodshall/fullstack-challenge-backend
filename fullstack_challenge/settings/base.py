@@ -179,10 +179,6 @@ CACHES = {
         'BACKEND': 'redis_cache.RedisCache',
         'LOCATION': REDIS_URL,
     },
-    # 'api': {
-    #     'BACKEND': 'redis_cache.RedisCache',
-    #     'LOCATION': REDIS_URL,
-    # }
 }
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
@@ -200,28 +196,12 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
     )
 
 }
-#
-# REST_FRAMEWORK_EXTENSIONS = {
-#     'DEFAULT_CACHE_RESPONSE_TIMEOUT': 60 * 1, # In seconds
-#     #'DEFAULT_USE_CACHE': 'api'
-# }
-#
-# AUTHENTICATION_BACKENDS = (
-#     'social.backends.instagram.InstagramOAuth2',
-#     'django.contrib.auth.backends.ModelBackend',
-# )
-#
-# SOCIAL_AUTH_INSTAGRAM_KEY = os.environ.get('SOCIAL_AUTH_INSTAGRAM_KEY', 'fd4f116989ef4010bfc4d3e900fbdbc8')
-# SOCIAL_AUTH_INSTAGRAM_SECRET = os.environ.get('SOCIAL_AUTH_INSTAGRAM_KEY', '07af9738775f4e07ae6f1e60acbb82ae')
-# SOCIAL_AUTH_INSTAGRAM_AUTH_EXTRA_ARGUMENTS = {'scope': 'likes'}
-# SOCIAL_AUTH_INSTAGRAM_EXTRA_DATA = ['username'] # Adds the 'username' to the social profile 'extra_data' field
-# SOCIAL_AUTH_RAISE_EXCEPTIONS = False
-#
-# SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/' # Used to redirect the user once the auth process ended successfully. The value of ?next=/foo is used if it was present
-# SOCIAL_AUTH_LOGIN_ERROR_URL = '/' # URL where the user will be redirected in case of an error
 
 try:
     from fullstack_challenge.settings.local import *
