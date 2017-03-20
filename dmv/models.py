@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.utils.timezone import now
 from localflavor.us.models import USStateField, USZipCodeField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -13,10 +14,24 @@ class Household(models.Model):
     state = USStateField()
     zip = USZipCodeField()
     number_of_bedrooms = models.PositiveSmallIntegerField()
+    is_completed = models.BooleanField(default=False)
+    completed_at = models.DateTimeField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return '{0}, {1}, {2} {3}'.format(self.address, self.city, self.state, self.zip)
+
+    def __init__(self, *args, **kwargs):
+        super(Household, self).__init__(*args, **kwargs)
+        # Store the original state of the is_completed field
+        self.__original_is_completed = self.is_completed
+
+    def save(self, *args, **kwargs):
+        # Add a timestamp the first time is_completed is changed to True
+        if self.is_completed and (self.is_completed != self.__original_is_completed):
+            self.completed_at = now()
+        super(Household, self).save(*args, **kwargs)
+        self.__original_is_completed = self.is_completed
 
 
 class Person(models.Model):
