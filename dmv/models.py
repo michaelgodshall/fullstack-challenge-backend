@@ -18,6 +18,9 @@ class Household(models.Model):
     completed_at = models.DateTimeField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class JSONAPIMeta:
+        resource_name = 'households'
+
     def __str__(self):
         return '{0}, {1}, {2} {3}'.format(self.address, self.city, self.state, self.zip)
 
@@ -40,13 +43,16 @@ class Person(models.Model):
         ('m', 'Male')
     )
 
-    household = models.ForeignKey(Household, related_name='people')
+    household = models.ForeignKey(Household, related_name='persons')
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
     age = models.PositiveSmallIntegerField()
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class JSONAPIMeta:
+        resource_name = 'persons'
 
     def __str__(self):
         return self.full_name
@@ -64,6 +70,9 @@ class Vehicle(models.Model):
     year = models.PositiveIntegerField(validators=[MinValueValidator(1900), MaxValueValidator(2018)])
     license_plate = models.CharField(max_length=10)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class JSONAPIMeta:
+        resource_name = 'vehicles'
 
     def __str__(self):
         return '{0} {1} {2}'.format(self.year, self.make, self.model)

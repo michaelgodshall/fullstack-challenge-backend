@@ -1,4 +1,5 @@
 from rest_framework import generics
+from rest_framework_json_api.views import RelationshipView
 from dmv.models import Household, Person, Vehicle
 from dmv.serializers import HouseholdSerializer, PersonSerializer, VehicleSerializer
 
@@ -6,6 +7,10 @@ from dmv.serializers import HouseholdSerializer, PersonSerializer, VehicleSerial
 class HouseholdListCreateAPIView(generics.ListCreateAPIView):
     serializer_class = HouseholdSerializer
     queryset = Household.objects.all()
+
+
+class HouseholdRelationshipView(RelationshipView):
+    queryset = Household.objects
     
     
 class HouseholdRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
@@ -22,6 +27,10 @@ class PersonListCreateAPIView(generics.ListCreateAPIView):
 class PersonRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PersonSerializer
     queryset = Person.objects.all()
+
+
+class PersonRelationshipView(RelationshipView):
+    queryset = Person.objects
     
 
 class VehicleListCreateAPIView(generics.ListCreateAPIView):
@@ -33,3 +42,7 @@ class VehicleListCreateAPIView(generics.ListCreateAPIView):
 class VehicleRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = VehicleSerializer
     queryset = Vehicle.objects.all()
+
+
+class VehicleRelationshipView(RelationshipView):
+    queryset = Vehicle.objects

@@ -1,11 +1,6 @@
-from rest_framework import serializers
+from rest_framework_json_api import serializers
+from rest_framework_json_api.relations import ResourceRelatedField
 from dmv.models import Household, Person, Vehicle
-
-
-class HouseholdSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Household
-        fields = '__all__'
 
 
 class PersonSerializer(serializers.ModelSerializer):
@@ -18,3 +13,18 @@ class VehicleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vehicle
         fields = '__all__'
+
+
+class HouseholdSerializer(serializers.ModelSerializer):
+
+    included_serializers = {
+        'persons': PersonSerializer,
+        'vehicles': VehicleSerializer
+    }
+
+    class Meta:
+        model = Household
+        fields = ('id', 'address', 'city', 'state', 'zip', 'number_of_bedrooms', 'created_at', 'persons', 'vehicles')
+
+    # class JSONAPIMeta:
+    #     included_resources = ['persons', 'vehicles']  # include by default
